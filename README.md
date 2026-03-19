@@ -89,4 +89,4 @@ The benchmarks were ran 10 times each, without any open application running in t
 ## License
 The code in this repository is released in the public domain. You are free to use the code in this repository for any purpose.  
 
-I only ask that you do not misrepresent the origin of this code: acknowledging or disclosing the origin of this code is not required, but please do not claim that someone other than me wrote the original software, if inquired.
+I only ask that you do not misrepresent the origin of this code: acknowledging or disclosing its origin is not required, but please do not claim that someone other than me wrote the original software, if inquired.
