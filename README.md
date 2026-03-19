@@ -37,7 +37,7 @@ ASCII char | 2-bit encoding
 1. Copy, download or clone parts of the code in this repository
 2. Compile with `-msse4.1`, `-mavx2`, `-mbmi2`, `-arch:AVX2`, etc. depending on your compiler and target hardware
 
-## Benchmarks
+## Benchmarks & tests
 Benchmarks encode/decode 1.00 MiB-worth of unencoded/encoded bases 1024 times, on a single core.  
   
 Benchmarks were compiled with MSVC using compilers flags `-O2 -arch:AVX2`, and with clang using compiler flags `-O2 -mavx2 -mbmi2`. Since benchmarks numbers were within ±5% of each others, the results reported below apply to both MSVC and clang.  
@@ -46,7 +46,7 @@ Benchmarks were run on an AMD Zen 3 5800H CPU (released January 2021), on Window
    
 Benchmarks were ran 10 times each, without any open application running in the background. The best of the 10 runs are reported below.
 
-The benchmark code (which is Windows-specific) is available here.
+The benchmarks and tests code (which are Windows-specific) is available in [nucleotide_2bit_codec_benchmarks_and_tests](https://github.com/badsami/nucleotide_2bit_codec_benchmarks_and_tests).
 
 #### Encoding
 - CPU clock boost disabled
