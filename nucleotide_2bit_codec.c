@@ -71,7 +71,7 @@ static const u8 ascii_to_encoded[64] =
   // 
   //   base ^ (base >> 1)
   //
-  // then pack pairs of encode bits together. For actual nucleotides, that always yields the binary
+  // then pack pairs of encoded bits together. For actual nucleotides, that always yields the binary
   // value specified above. Otherwise, that always yields the binary value below
   [' '  - LOWEST_VALID_ASCII_CHAR] = 0b00,
   ['!'  - LOWEST_VALID_ASCII_CHAR] = 0b00,
