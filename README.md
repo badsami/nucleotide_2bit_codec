@@ -1,5 +1,5 @@
 # Nucleotide 2-bit codec
-C functions to encode and decode nucleotides between ASCII strings and packed 2-bit values, using scalar, SWAR BMI2 and SIMD SSE4.1 and AVX2 x86 instruction sets.
+C functions to encode and decode nucleotides between ASCII strings and packed 2-bit values, using scalar, BMI2 and SSE4.1 and AVX2 x86 instruction sets.
 
 ## Features
 - [`nucleotide_2bit_codec.h`](nucleotide_2bit_codec.h) / [`nucleotide_2bit_codec.c`](nucleotide_2bit_codec.c):
@@ -11,7 +11,7 @@ C functions to encode and decode nucleotides between ASCII strings and packed 2-
 - No CPU dispatching utility is provided
 - Aimed at 64-bit x86 architectures
 - Compiles with GCC, clang and MSVC
-- Benchmarked and tested on a single CPU
+- Benchmarked and tested
 
 ## What is encoded and decoded
 This library can encode ASCII characters representing IUPAC DNA/RNA nucleotides to the following 2-bit values and decode them back:
@@ -22,7 +22,7 @@ Nucleotide base    | 2-bit encoding
 `G`, `g`           | `0b10`
 `T`, `t`, `U`, `u` | `0b11`
 
-Other ASCII characters between `' '` (32) and `DEL` (127) are also encoded to one of these 4 2-bit values, but will be decoded to the matching nucleotides in the table above, not to the original character. See [`ascii_to_encoded` in `nucleotide_2bit_codec.c`](nucleotide_2bit_codec.c) for more details.
+Other ASCII characters between `' '` (32) and `DEL` (127) are also encoded to one of these 4 2-bit values, but will be decoded to the matching nucleotides in the table above, not to the original character. See [`ascii_to_encoded` in `nucleotide_2bit_codec.c`](https://github.com/badsami/nucleotide_2bit_codec/blob/main/nucleotide_2bit_codec.c#L56-L135) for more details.
 
 Here are the 2-bit encodings of some non-nucleotide characters encountered in sequences found in FASTQ and FASTA files:
 ASCII char | 2-bit encoding
