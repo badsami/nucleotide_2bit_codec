@@ -42,7 +42,7 @@ Benchmark and test code (which is Windows-specific) is available in [nucleotide_
 
 Benchmarks encode/decode 1.00 MiB-worth of unencoded/encoded bases 1024 times, on a single core.  
   
-Benchmarks were compiled with MSVC using compilers flags `-O2 -arch:AVX2`, and with clang using compiler flags `-O2 -mavx2 -mbmi2`. Since benchmarks numbers were within ±5% of each others, the results reported below apply to both MSVC and clang.  
+The numbers below are from benchmarks compiled with MSVC using compilers flags `-O2 -arch:AVX2`, and with clang using compiler flags `-O2 -mavx2 -mbmi2`. Since benchmarks numbers were within ±5% of each others, the results reported below apply to both MSVC and clang.   
   
 Benchmarks were run on an AMD Zen 3 5800H CPU (released January 2021), on Windows.  
    
