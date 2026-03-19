@@ -1,20 +1,19 @@
 # Nucleotide 2-bit codec
-C functions to encode and decode nucleotides between ASCII strings and packed 2-bit values, using scalar, BMI2 and SSE4.1 and AVX2 x86 instruction sets.
+C functions to encode and decode nucleotides between ASCII strings and packed 2-bit values, using scalar, BMI2, SSE4.1 and AVX2 x86 instruction sets.
 
 ## Features
 - [`nucleotide_2bit_codec.h`](nucleotide_2bit_codec.h) / [`nucleotide_2bit_codec.c`](nucleotide_2bit_codec.c):
-  - Functions encoding ASCII bases and decoding 2-bit bases, that are tied to specific SWAR/SIMD instruction sets (e.g. `encode_bases_scalar()`, `encode_bases_bmi2()`, `decode_bases_avx2()`, etc.)
-  - Functions encoding a fixed number ASCII bases and decoding a fixed number 2-bit bases, that are not tied to any specific SWAR/SIMD instruction set
+  - Functions encoding ASCII bases and decoding 2-bit bases, that are tied to specific instruction sets (e.g. `encode_bases_scalar()`, `encode_bases_bmi2()`, `decode_bases_avx2()`, etc.)
+  - Functions encoding a fixed number ASCII bases and decoding a fixed number of 2-bit bases, that are not tied to any specific instruction set
   - Utility functions to convert between base count and encoded/unencoded byte count
 - [`decoded_tables.h`](decoded_tables.h) / [`decoded_tables.c`](decoded_tables.c):
-  - Tables of all 256 combinations of 4 nucleotides for ASCII characters "ACGT", "acgt", "ACGU" and "acgu", to be passed to decoding functions
-- No CPU dispatching utility is provided
+  - Tables of all 256 combinations of 4 nucleotides represented by ASCII characters "ACGT", "acgt", "ACGU" and "acgu", to be passed to decoding functions
 - Aimed at 64-bit x86 architectures
 - Compiles with GCC, clang and MSVC
 - Benchmarked and tested
 
 ## What is encoded and decoded
-This library can encode ASCII characters representing IUPAC DNA/RNA nucleotides to the following 2-bit values and decode them back:
+This library can encode ASCII characters representing non-ambiguous IUPAC DNA/RNA nucleotides to the following 2-bit values and decode them back:
 Nucleotide base    | 2-bit encoding
 -------------------|---------------
 `A`, `a`           | `0b00`
@@ -22,7 +21,7 @@ Nucleotide base    | 2-bit encoding
 `G`, `g`           | `0b10`
 `T`, `t`, `U`, `u` | `0b11`
 
-Other ASCII characters between `' '` (32) and `DEL` (127) are also encoded to one of these 4 2-bit values, but will be decoded to the matching nucleotides in the table above, not to the original character. See [`ascii_to_encoded` in `nucleotide_2bit_codec.c`](https://github.com/badsami/nucleotide_2bit_codec/blob/main/nucleotide_2bit_codec.c#L56-L135) for more details.
+Other ASCII characters between `' '` (32) and `DEL` (127) are also encoded to one of these four 2-bit values, but will be decoded to the matching nucleotides in the table above, not to the original ASCII character. See [`ascii_to_encoded` in `nucleotide_2bit_codec.c`](https://github.com/badsami/nucleotide_2bit_codec/blob/main/nucleotide_2bit_codec.c#L56-L135) for more details.
 
 Here are the 2-bit encodings of some non-nucleotide characters encountered in sequences found in FASTQ and FASTA files:
 ASCII char | 2-bit encoding
@@ -37,16 +36,16 @@ ASCII char | 2-bit encoding
 1. Copy, download or clone parts of the code in this repository
 2. Compile with `-msse4.1`, `-mavx2`, `-mbmi2`, `-arch:AVX2`, etc. depending on your compiler and target hardware
 
+Although the BMI2, SSE4.1 and AVX2 instruction sets can be found on most x86 CPUs nowadays, be aware that they may not always be available. A solution in such cases is to perform runtime [CPU dispatching](https://johnnysswlab.com/cpu-dispatching-make-your-code-both-portable-and-fast/) based on the [`CPUID` x86 instruction](https://en.wikipedia.org/wiki/CPUID).
+
 ## Benchmarks & tests
-Benchmark and test code (which is Windows-specific) is available in [nucleotide_2bit_codec_benchmarks_and_tests](https://github.com/badsami/nucleotide_2bit_codec_benchmarks_and_tests).
+The benchmarks and tests code (which is Windows-specific), along with instruction to build and run it, is available in [nucleotide_2bit_codec_benchmarks_and_tests](https://github.com/badsami/nucleotide_2bit_codec_benchmarks_and_tests).
 
 Benchmarks encode/decode 1.00 MiB-worth of unencoded/encoded bases 1024 times, on a single core.  
-  
-The numbers below are from benchmarks compiled with MSVC using compilers flags `-O2 -arch:AVX2`, and with clang using compiler flags `-O2 -mavx2 -mbmi2`. Since benchmarks numbers were within ±5% of each others, the results reported below apply to both MSVC and clang.   
-  
-Benchmarks were run on an AMD Zen 3 5800H CPU (released January 2021), on Windows.  
+
+The numbers reported below are from benchmarks compiled with MSVC using compilers flags `-O2 -arch:AVX2` and with clang using compiler flags `-O2 -mavx2 -mbmi2`, and run on an AMD Zen 3 5800H CPU (released January 2021) on Windows. For all 4 benchmark scenarii, measurements were within ±5% of each others. So the results reported below apply benchmarks compiled with both MSVC and clang.  
    
-Benchmarks were ran 10 times each, without any open application running in the background. The best of the 10 runs are reported below.
+The benchmarks were ran 10 times each, without any open application running in the background. The best of the 10 runs are reported below.
 
 #### Encoding
 - CPU clock boost disabled
