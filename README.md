@@ -39,7 +39,7 @@ ASCII char | 2-bit encoding
 Although the BMI2, SSE4.1 and AVX2 instruction sets can be found on most x86 CPUs nowadays, be aware that they may not always be available. A solution in such cases is to perform runtime [CPU dispatching](https://johnnysswlab.com/cpu-dispatching-make-your-code-both-portable-and-fast/) based on the [`CPUID` x86 instruction](https://en.wikipedia.org/wiki/CPUID).
 
 ## Benchmarks & tests
-The benchmarks and tests code (which is Windows-specific), along with instruction to build and run it, is available in [nucleotide_2bit_codec_benchmarks_and_tests](https://github.com/badsami/nucleotide_2bit_codec_benchmarks_and_tests).
+The benchmarks and tests code (which is Windows-specific), along with instructions to build and run it, is available in [nucleotide_2bit_codec_benchmarks_and_tests](https://github.com/badsami/nucleotide_2bit_codec_benchmarks_and_tests).
 
 Benchmarks encode/decode 1.00 MiB-worth of unencoded/encoded bases 1024 times, on a single core.  
 
