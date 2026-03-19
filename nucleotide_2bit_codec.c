@@ -426,7 +426,7 @@ void encode_bases_avx2(const char* restrict unencoded_bases,
     //
     //   packed_encoded = ... abcdefgh ijkl.... ........ ....wxyz ABCDEFGH IJKL.... ........ ....WXYZ
 
-    // Using shuffle the high and low lane the same way then using _mm_unpacklo_epi32() may yield a
+    // Shuffling the high and low lane the same way then using _mm_unpacklo_epi32() may yield a
     // slightly better throughput (~1 GB/s) on some processors
     //
     //   __m128i hi_packed_1x32_encoded = _mm256_extracti128_si256(packed_2x32_encoded, 1);
