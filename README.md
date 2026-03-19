@@ -84,6 +84,7 @@ The benchmark code (which is Windows-specific) is available here.
 - Promoting the 2-bit representation of nucleotides for operations repeatedly using/reading the same sequences (e.g. sequence alignment, indexing & searching reference genomes), shifting away from text
 - Encouraging work on more compact data structures and accelerated algorithms for determined sequences
 - Providing a reasonably-efficient and straightforward way to convert between ASCII text strings and packed 2-bit elements to build upon and improve
+- Scaling sequence analysis for 3rd generation high-throughput sequencing technologies, which output reads longer than 2nd generation sequencing technologies
 - Helping reduce processing times, memory usage, storage used space, and overall computing energy consumption
 
 ## License
