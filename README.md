@@ -1,5 +1,5 @@
 # Nucleotide 2-bit codec
-C functions to encode and decode nucleotides between ASCII strings and packed 2-bit values, using scalar, BMI2, SSE4.1 and AVX2 x86 instruction sets.
+C functions to encode and decode nucleotides between ASCII character strings and packed 2-bit values, using scalar, BMI2, SSE4.1 and AVX2 x86 instruction sets.
 
 ## Features
 - [`nucleotide_2bit_codec.h`](nucleotide_2bit_codec.h) / [`nucleotide_2bit_codec.c`](nucleotide_2bit_codec.c):
@@ -82,7 +82,7 @@ The benchmarks were ran 10 times each, without any open application running in t
 ## Goals & motivation
 - Promoting the 2-bit representation of nucleotides for operations repeatedly using/reading the same sequences (e.g. sequence alignment, indexing & searching reference genomes), shifting away from text
 - Encouraging work on more compact data structures and accelerated algorithms for determined sequences
-- Providing a reasonably-efficient and straightforward way to convert between ASCII text strings and packed 2-bit elements to build upon and improve
+- Providing a reasonably-efficient and straightforward way to convert between ASCII character strings and packed 2-bit elements to build upon and improve
 - Scaling sequence analysis for 3rd generation high-throughput sequencing technologies, which output reads longer than 2nd generation sequencing technologies
 - Helping reduce processing times, memory usage, storage used space, and overall computing energy consumption
 
