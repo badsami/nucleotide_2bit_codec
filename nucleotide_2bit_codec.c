@@ -57,7 +57,7 @@ u64 decoded_byte_count_to_base_count(u64 byte_count)
 #define HIGHEST_VALID_ASCII_CHAR '_'
 static const u8 ascii_to_encoded[64] =
 {
-  // Encoding DNA nucleotides
+  // Encoding nucleotides
   ['A'  - LOWEST_VALID_ASCII_CHAR] = 0b00,
   ['C'  - LOWEST_VALID_ASCII_CHAR] = 0b01,
   ['G'  - LOWEST_VALID_ASCII_CHAR] = 0b10,
