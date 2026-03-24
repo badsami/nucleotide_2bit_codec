@@ -1,5 +1,5 @@
 # Nucleotide 2-bit codec
-C functions to encode and decode nucleotides between ASCII character strings and packed 2-bit values, using scalar, BMI2, SSE4.1 and AVX2 x86 instructions.
+C functions to convert nucleotide sequences between ASCII character strings and packed 2-bit values, using scalar, BMI2, SSE4.1 and AVX2 x86 instructions.
 
 ## Features
 - [`nucleotide_2bit_codec.h`](nucleotide_2bit_codec.h) / [`nucleotide_2bit_codec.c`](nucleotide_2bit_codec.c):
