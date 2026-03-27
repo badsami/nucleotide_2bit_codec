@@ -80,7 +80,7 @@ The benchmarks were ran 10 times each, without any open application running in t
   AVX2   |       21.51 GiB/s |       53.65 GiB/s |   **51.42 GiB/s**
 
 ## Goals & motivation
-- Promoting the 2-bit representation of nucleotides for operations repeatedly using/reading the same sequences (e.g. sequence alignment, indexing & searching reference genomes), shifting away from text
+- Promoting the 2-bit representation of nucleotides for operations repeatedly using/reading the same sequences (e.g. sequence alignment, indexing & searching reference genomes, read deduplication), shifting away from text
 - Encouraging work on more compact data structures and accelerated algorithms for determined sequences
 - Providing a reasonably-efficient and straightforward way to convert between ASCII character strings and packed 2-bit elements to build upon and improve
 - Scaling sequence analysis for 3rd generation high-throughput sequencing technologies, which output reads longer than 2nd generation sequencing technologies
